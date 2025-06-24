@@ -1,0 +1,1113 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Paleta de colores rosados originales, adaptados a variables */
+  --primary-pink: #FF8FAB; /* Rosa Principal (Header, Footer) */
+  --secondary-pink: #FFE4E1; /* Rosa Suave (Hero) */
+  --accent-pink: #FF69B4; /* Rosa de Acento (Botones, Underline) */
+  --dark-pink: #FF1493; /* Rosa Oscuro (Hover) */
+  --light-bg: #FFF0F5; /* Fondo muy claro, rosa pálido */
+  --text-dark: #333333; /* Texto oscuro */
+  --text-light: #FDFDFD; /* Texto muy claro para fondos oscuros */
+  --card-bg: #FFFFFF; /* Fondo de tarjetas blanco puro */
+  --shadow-light: rgba(0, 0, 0, 0.06);
+  --shadow-medium: rgba(0, 0, 0, 0.12);
+  --shadow-heavy: rgba(0, 0, 0, 0.2);
+
+  /* Fuentes */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-size-base: 18px; /* Tamaño de fuente base más cómodo */
+}
+
+body {
+  background: var(--light-bg);
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  overflow-x: hidden;
+  animation: subtleBackgroundPulse 15s infinite alternate ease-in-out;
+}
+
+/* Tipografía general */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--primary-pink); /* Usar el rosa principal para títulos */
+  margin-bottom: 25px;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-size: 3.8em;
+  letter-spacing: 0.5px;
+}
+
+h2 {
+  font-size: 2.8em;
+  margin-top: 60px;
+  position: relative;
+  padding-bottom: 15px;
+  color: var(--accent-pink); /* Usar el rosa de acento para h2 */
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 5px;
+  background-color: var(--accent-pink);
+  margin: 10px auto 0;
+  border-radius: 3px;
+  opacity: 0;
+  transform: scaleX(0);
+  animation: drawLine 1s ease-out forwards;
+  animation-delay: inherit;
+}
+
+@keyframes drawLine {
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+p {
+  font-size: 1.1em;
+  max-width: 800px;
+  margin: 0 auto 20px;
+  line-height: 1.8;
+}
+
+/* Header */
+header {
+  background: var(--primary-pink); /* Color rosa principal directo */
+  color: var(--text-light);
+  padding: 25px 0;
+  text-align: center;
+  box-shadow: 0 6px 20px var(--shadow-medium);
+  opacity: 0;
+  transform: translateY(-80px);
+  animation: slideInFromTop 1s ease-out forwards;
+  z-index: 1000;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  position: relative; /* Añadido para posicionar el switcher */
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilos para el cambio de idioma */
+.language-switcher {
+    position: absolute; /* Usamos absolute con respecto al header */
+    top: 20px; /* Distancia desde arriba */
+    right: 30px; /* Distancia desde la derecha */
+    z-index: 1001; /* Asegura que esté por encima de otros elementos del header */
+}
+
+.language-button {
+    background-color: var(--accent-pink); /* Color rosa de acento */
+    color: var(--text-light); /* Texto claro */
+    border: none;
+    padding: 10px 18px;
+    border-radius: 25px; /* Más redondeado */
+    cursor: pointer;
+    font-size: 1.05em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra suave */
+    letter-spacing: 0.5px;
+}
+
+.language-button:hover {
+    background-color: var(--dark-pink); /* Rosa oscuro al pasar el ratón */
+    transform: translateY(-2px) scale(1.03); /* Ligero levantamiento */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2); /* Sombra más pronunciada */
+}
+
+@media (max-width: 768px) {
+  .language-switcher {
+    top: 15px;
+    right: 15px;
+  }
+
+  .language-button {
+    padding: 8px 15px;
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .language-switcher {
+    position: relative; /* Cambiar a relative para que fluya con el contenido en móviles */
+    top: auto;
+    right: auto;
+    margin-top: 15px; /* Espacio debajo del título o nav */
+    text-align: center;
+    width: 100%;
+    order: 3; /* Asegura que aparezca debajo de h1 y nav en flex-direction: column */
+  }
+  .header-content {
+      flex-direction: column;
+      align-items: center;
+  }
+  .language-button {
+      width: fit-content;
+      margin: 0 auto;
+      display: block; /* Para centrar el botón */
+  }
+}
+
+
+header h1 {
+  color: var(--text-light);
+  font-size: 4em;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  margin-bottom: 15px;
+  opacity: 0;
+  transform: scale(0.7);
+  animation: fadeInScale 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+nav {
+  margin-top: 15px;
+}
+
+.nav-link {
+  margin: 0 25px;
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.15em;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInSlideUp 0.8s ease-out forwards;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background-color: var(--accent-pink); /* Color de acento para el underline */
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.3s ease-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: var(--secondary-pink); /* Rosa suave al hover */
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* Animaciones de retraso para la navegación */
+.nav-link:nth-child(1) { animation-delay: 1s; }
+.nav-link:nth-child(2) { animation-delay: 1.15s; }
+.nav-link:nth-child(3) { animation-delay: 1.3s; }
+.nav-link:nth-child(4) { animation-delay: 1.45s; }
+.nav-link:nth-child(5) { animation-delay: 1.6s; }
+.nav-link:nth-child(6) { animation-delay: 1.75s; }
+
+
+/* Hero Section */
+.hero {
+  background: var(--secondary-pink); /* Rosa suave directo */
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  margin-bottom: 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Usando colores de la paleta para las burbujas SVG */
+  background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="5" fill="%23FFE4E1" opacity="0.4"/><circle cx="80" cy="50" r="3" fill="%23FFC0CB" opacity="0.3"/><circle cx="50" cy="80" r="4" fill="%23FFB6C1" opacity="0.5"/></svg>');
+  background-size: 200px;
+  animation: moveBackground 30s linear infinite;
+  z-index: 1;
+}
+
+@keyframes moveBackground {
+  from { background-position: 0 0; }
+  to { background-position: 200px 200px; }
+}
+
+.hero * {
+  position: relative;
+  z-index: 2;
+}
+
+.foto-principal {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%; /* Asegura que sea perfectamente circular */
+  object-fit: cover; /* Para que la imagen cubra el área sin distorsionarse */
+  margin-bottom: 40px;
+  border: 8px solid var(--card-bg); /* Borde blanco alrededor */
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.25); /* Sombra suave pero visible */
+  opacity: 0;
+  transform: scale(0.5);
+  animation: fadeInScale 1.5s ease-out forwards, float 3s ease-in-out infinite alternate;
+  animation-delay: 1.8s;
+}
+
+.hero h2.animated-text {
+  font-size: 3.5em;
+  color: var(--accent-pink); /* Rosa de acento para el título del hero */
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+  animation: slideInFromLeft 1.2s ease-out forwards;
+  animation-delay: 2.2s;
+  opacity: 0;
+}
+
+.hero p.animated-text {
+  font-size: 1.4em;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  color: var(--text-dark);
+  animation: slideInFromRight 1.2s ease-out forwards;
+  animation-delay: 2.5s;
+  opacity: 0;
+}
+
+.hero-cta {
+  margin-top: 30px;
+  font-size: 1.3em;
+  padding: 18px 40px;
+  border-radius: 30px;
+  background: var(--accent-pink); /* Rosa de acento para el botón */
+  box-shadow: 0 6px 20px var(--shadow-medium);
+  animation: fadeInScale 1s ease-out forwards;
+  animation-delay: 2.8s;
+}
+
+/* Sections */
+.section {
+  padding: 80px 30px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 40px auto;
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px var(--shadow-medium);
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInSlideUp 1s ease-out forwards;
+}
+
+/* Retrasos para las secciones */
+#historia { animation-delay: 3.2s; }
+#cv { animation-delay: 3.6s; }
+#proyectos { animation-delay: 4.0s; }
+#galeria { animation-delay: 4.4s; }
+#contacto { animation-delay: 4.8s; }
+
+.section img:not(.foto-principal) {
+  width: 85%;
+  max-width: 550px; /* Asegura que no se haga demasiado grande */
+  height: auto; /* Mantiene la proporción de la imagen */
+  display: block; /* Centra la imagen si tiene max-width */
+  margin: 40px auto 0 auto; /* Centra la imagen */
+  border-radius: 15px;
+  box-shadow: 0 8px 25px var(--shadow-medium);
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  opacity: 0;
+  transform: scale(0.7);
+  animation: fadeInScale 0.9s ease-out forwards;
+  animation-delay: inherit;
+  /* Nuevos estilos para un look más "pintado" o artístico */
+  filter: saturate(1.1) contrast(1.05); /* Ligeramente más vibrante */
+  border: 4px solid var(--secondary-pink); /* Un borde suave que encuadre la imagen */
+  object-fit: cover; /* Asegura que la imagen llene el espacio sin distorsionarse */
+}
+
+.section img:not(.foto-principal):hover {
+  transform: scale(1.06) rotate(2deg);
+  box-shadow: 0 15px 45px var(--shadow-heavy);
+  filter: saturate(1.2) contrast(1.1) brightness(1.05); /* Más vibrante al hover */
+}
+
+.lista-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+  padding: 30px;
+  background-color: var(--light-bg); /* Rosa pálido para el fondo de lista */
+  border-radius: 15px;
+  box-shadow: inset 0 3px 10px rgba(0,0,0,0.07);
+}
+
+.lista-horizontal li {
+  background: var(--card-bg);
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px var(--shadow-light);
+  font-weight: 500;
+  color: var(--text-dark);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  flex-basis: calc(33.333% - 30px);
+  max-width: 350px;
+  text-align: left;
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideInFromLeft 0.7s ease-out forwards;
+}
+
+.lista-horizontal li strong {
+    color: var(--accent-pink); /* Color para los títulos de las habilidades/educación */
+    font-size: 1.1em; /* Un poco más grande que el texto normal */
+    display: block; /* Para que el texto siguiente vaya en una nueva línea */
+    margin-bottom: 5px;
+}
+
+.lista-horizontal li span {
+    display: block; /* Para que el contenido vaya debajo del strong */
+    font-size: 1em;
+    color: var(--text-dark);
+}
+
+.lista-horizontal li:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px var(--shadow-medium);
+  background: linear-gradient(45deg, #FFF, var(--secondary-pink) 5%); /* Sutil gradiente al hover */
+}
+
+/* Retrasos para los elementos de la lista (más largos) */
+.lista-horizontal li:nth-child(1) { --item-delay: 0.1s; animation-delay: calc(3.8s + var(--item-delay)); }
+.lista-horizontal li:nth-child(2) { --item-delay: 0.2s; animation-delay: calc(3.8s + var(--item-delay)); }
+.lista-horizontal li:nth-child(3) { --item-delay: 0.3s; animation-delay: calc(3.8s + var(--item-delay)); }
+.lista-horizontal li:nth-child(4) { --item-delay: 0.4s; animation-delay: calc(3.8s + var(--item-delay)); }
+.lista-horizontal li:nth-child(5) { --item-delay: 0.5s; animation-delay: calc(3.8s + var(--item-delay)); }
+.lista-horizontal li:nth-child(6) { --item-delay: 0.6s; animation-delay: calc(3.8s + var(--item-delay)); }
+.lista-horizontal li:nth-child(7) { --item-delay: 0.7s; animation-delay: calc(3.8s + var(--item-delay)); }
+.lista-horizontal li:nth-child(8) { --item-delay: 0.8s; animation-delay: calc(3.8s + var(--item-delay)); }
+
+
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 35px;
+  margin-top: 40px;
+}
+
+.imagenes-logros img {
+  width: 100%;
+  max-width: 350px; /* Tamaño máximo para controlar el layout */
+  height: 250px; /* Altura fija para uniformidad en la galería */
+  object-fit: cover; /* ¡CLAVE! Ajusta la imagen para que cubra el espacio sin distorsionarse */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px var(--shadow-medium);
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, filter 0.4s ease-in-out;
+  opacity: 0;
+  transform: scale(0.7);
+  animation: fadeInScale 0.9s ease-out forwards;
+  /* Nuevos estilos para un look más "pintado" o artístico en la galería */
+  filter: grayscale(10%) brightness(1.05) contrast(1.05); /* Suave desaturación y brillo */
+  border: 3px solid var(--accent-pink); /* Borde acentuado para un efecto de marco */
+}
+
+/* Retrasos para las imágenes de galería */
+.imagenes-logros img:nth-child(1) { animation-delay: 4.6s; }
+.imagenes-logros img:nth-child(2) { animation-delay: 4.8s; }
+.imagenes-logros img:nth-child(3) { animation-delay: 5.0s; }
+.imagenes-logros img:nth-child(4) { animation-delay: 5.2s; }
+.imagenes-logros img:nth-child(5) { animation-delay: 5.4s; }
+.imagenes-logros img:nth-child(6) { animation-delay: 5.6s; }
+
+.imagenes-logros img:hover {
+  transform: scale(1.08) rotate(3deg); /* Ligeramente más grande y rota */
+  box-shadow: 0 18px 50px var(--shadow-heavy); /* Sombra más intensa al pasar el ratón */
+  filter: grayscale(0%) brightness(1.1) contrast(1.1) drop-shadow(0 0 15px var(--accent-pink)); /* Restaurar color, más brillo y sombra de color */
+}
+
+
+/* Formulario de Contacto */
+.contacto-intro {
+  font-size: 1.2em;
+  color: var(--text-dark);
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: auto;
+  gap: 20px;
+  padding: 40px;
+  background: var(--light-bg); /* Rosa pálido para el fondo del formulario */
+  border-radius: 20px;
+  box-shadow: 0 15px 50px var(--shadow-medium);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+input, textarea {
+  padding: 18px;
+  border: 2px solid var(--primary-pink); /* Borde con el rosa principal */
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 1.1em;
+  color: var(--text-dark);
+  background-color: var(--card-bg);
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInSlideUp 0.8s ease-out forwards;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent-pink); /* Rosa de acento al enfocar */
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.8); /* Sombra rosa brillante */
+  outline: none;
+  transform: scale(1.005);
+}
+
+/* Retrasos para campos de formulario */
+.contact-form input:nth-child(1) { animation-delay: 5s; }
+.contact-form input:nth-child(2) { animation-delay: 5.2s; }
+.contact-form textarea { animation-delay: 5.4s; }
+
+
+button {
+  background: var(--accent-pink); /* Rosa de acento para el botón */
+  color: var(--text-light);
+  border: none;
+  padding: 18px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.3em;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 25px var(--shadow-medium);
+  transition: background 0.4s, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeInScale 0.9s ease-out forwards;
+  animation-delay: 5.6s;
+}
+
+button:hover {
+  background: var(--dark-pink); /* Rosa oscuro al hover */
+  transform: scale(1.06) translateY(-4px);
+  box-shadow: 0 15px 40px var(--shadow-heavy);
+}
+
+.boton {
+  display: inline-block;
+  background: var(--accent-pink); /* Rosa de acento para el botón */
+  color: var(--text-light);
+  padding: 18px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-top: 40px;
+  font-size: 1.3em;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 25px var(--shadow-medium);
+  transition: background 0.4s, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeInScale 0.9s ease-out forwards;
+  animation-delay: 4.0s;
+}
+
+.boton:hover {
+  background: var(--dark-pink); /* Rosa oscuro al hover */
+  transform: scale(1.08) translateY(-5px);
+  box-shadow: 0 15px 40px var(--shadow-heavy);
+}
+
+
+/* ---------------------------------- */
+/* KEYFRAMES DE ANIMACIONES CSS */
+/* ---------------------------------- */
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInFromLeft {
+  from { opacity: 0; transform: translateX(-120px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInFromRight {
+  from { opacity: 0; transform: translateX(120px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-25px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeInSlideUp {
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInFromTop {
+  from { opacity: 0; transform: translateY(-100px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes subtleBackgroundPulse {
+  0% { background-color: #FFF0F5; } /* Rosa pálido original */
+  50% { background-color: #FAEBF0; } /* Un tono ligeramente diferente para el pulso */
+  100% { background-color: #FFF0F5; }
+}
+
+/* ---------------------------------- */
+/* RESPONSIVE DESIGN (Media Queries Avanzados) */
+/* ---------------------------------- */
+
+@media (max-width: 1024px) {
+  h1 { font-size: 3.2em; }
+  h2 { font-size: 2.4em; }
+  .hero { padding: 80px 20px; }
+  .foto-principal { width: 180px; height: 180px; }
+  .hero h2.animated-text { font-size: 3em; }
+  .hero p.animated-text { font-size: 1.2em; }
+  .section { padding: 60px 25px; }
+  .lista-horizontal li { flex-basis: calc(50% - 30px); }
+  .imagenes-logros img { max-width: 300px; height: 200px; } /* Ajuste de tamaño para galería */
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 2.8em; }
+  h2 { font-size: 2.2em; }
+  header { padding: 20px 0; }
+  .header-content { padding: 0 20px; }
+  nav { margin-top: 10px; }
+  .nav-link { margin: 0 15px; font-size: 1.05em; }
+  .hero { padding: 60px 15px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; }
+  .foto-principal { width: 150px; height: 150px; margin-bottom: 30px; border-width: 6px; }
+  .hero h2.animated-text { font-size: 2.8em; }
+  .hero p.animated-text { font-size: 1.1em; }
+  .hero-cta { padding: 15px 30px; font-size: 1.2em; }
+  .section { padding: 50px 20px; margin: 30px auto; border-radius: 15px; }
+  .lista-horizontal li { flex-basis: 100%; max-width: 450px; }
+  .imagenes-logros { gap: 20px; }
+  .imagenes-logros img { max-width: 100%; height: 180px; /* Ajuste de tamaño para galería */ }
+  .contact-form { padding: 30px; }
+  input, textarea { padding: 15px; font-size: 1em; }
+  button, .boton { padding: 15px 25px; font-size: 1.1em; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2.2em; }
+  h2 { font-size: 1.8em; }
+  .header-content { flex-direction: column; align-items: center; }
+  nav { margin-top: 15px; }
+  .nav-link { display: block; margin: 8px 0; font-size: 0.95em; }
+  .hero { padding: 40px 10px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; }
+  .foto-principal { width: 120px; height: 120px; margin-bottom: 25px; border-width: 6px; }
+  .hero h2.animated-text { font-size: 2.2em; }
+  .hero p.animated-text { font-size: 1em; }
+  .hero-cta { padding: 12px 25px; font-size: 1em; }
+  .section { padding: 30px 15px; margin: 25px auto; border-radius: 12px; }
+  .lista-horizontal li { padding: 15px 20px; border-radius: 10px; }
+  .contact-form { padding: 25px; }
+  input, textarea { padding: 12px; font-size: 0.95em; }
+  button, .boton { padding: 12px 20px; font-size: 1em; }
+  footer { padding: 30px 15px; }
+  .imagenes-logros img { height: 150px; /* Ajuste de tamaño para galería en móviles pequeños */ }
+}
+
+/* Proyectos Section - Diseño de Proyectos */
+.proyectos-section {
+    background-color: var(--light-bg); /* Fondo muy suave, casi blanco rosado */
+    padding: 120px 5%; /* Amplio espacio vertical */
+    text-align: center; /* Centra el título y el grid principal */
+    overflow: hidden;
+    position: relative;
+}
+
+.proyectos-section h2 {
+    color: var(--dark-pink); /* Un rosa profundo para el título principal */
+    margin-bottom: 2.8em; /* Espacio generoso debajo del título */
+    font-size: 4em; /* Título aún más grande y prominente */
+    font-weight: 700;
+    letter-spacing: -0.03em; /* Ligeramente más apretado para un look moderno */
+    text-shadow: 0px 6px 20px rgba(0,0,0,0.1); /* Sombra más pronunciada pero suave */
+    position: relative;
+}
+
+.proyectos-section h2::after {
+    content: '';
+    display: block;
+    width: 90px; /* Ancho de la línea decorativa más grande */
+    height: 7px; /* Grosor de la línea */
+    background: linear-gradient(90deg, var(--accent-pink) 0%, var(--primary-pink) 100%); /* Degradado para la línea */
+    margin: 25px auto 0 auto; /* Centrar y separar */
+    border-radius: 4px;
+}
+
+.proyectos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Tarjetas más anchas */
+  gap: 80px; /* Mayor separación entre tarjetas */
+  width: 100%;
+  max-width: 1300px; /* Ancho máximo para la cuadrícula */
+  margin: 0 auto; /* Centra la cuadrícula en la página */
+  padding: 30px 0; /* Padding interno para la cuadrícula */
+}
+
+.card {
+  background-color: var(--card-bg); /* Fondo blanco puro */
+  border-radius: 28px; /* Bordes aún más redondeados */
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12); /* Sombra inicial elegante */
+  overflow: hidden;
+  text-align: center;
+  padding: 50px; /* Más padding interno */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.6s cubic-bezier(0.2, 0.9, 0.3, 1), border-color 0.4s ease;
+  border: 2px solid transparent; /* Borde inicial transparente */
+  position: relative;
+  /* Efecto de borde de gradiente al pasar el ratón */
+  background-clip: padding-box; /* La imagen de fondo no cubre el padding */
+  border-image: linear-gradient(45deg, var(--accent-pink), var(--primary-pink)) 1; /* Esto se aplica en hover */
+}
+
+.card::before { /* Para el brillo sutil que aparece al inicio */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    background: linear-gradient(45deg, rgba(255,105,180,0.1) 0%, rgba(255,143,171,0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none; /* Asegura que no interfiera con los clics */
+    z-index: 1; /* Encima de la sombra interna pero debajo del contenido */
+}
+
+.card:hover {
+  transform: translateY(-25px) scale(1.03); /* Se levanta más y se agranda */
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.25); /* Sombra más dramática */
+  border-color: var(--accent-pink); /* Borde de color al pasar el ratón */
+}
+
+.card:hover::before {
+    opacity: 1; /* Muestra el brillo al pasar el ratón */
+}
+
+
+.card h3 {
+  color: var(--primary-pink); /* El mismo rosa principal */
+  margin-top: 35px; /* Más espacio después de la imagen/slider */
+  margin-bottom: 18px;
+  font-size: 2.6em; /* Título de tarjeta aún más grande y legible */
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.05); /* Sombra sutil en el título de la tarjeta */
+}
+
+.card p {
+  font-size: 1.25em; /* Texto más grande para una excelente legibilidad */
+  color: #4a4a4a; /* Un gris oscuro para un contraste óptimo */
+  line-height: 1.9; /* Mayor interlineado para lectura cómoda */
+  margin-bottom: 30px; /* Más espacio después de la descripción */
+  flex-grow: 1; /* Permite que el texto se adapte y empuje el botón hacia abajo */
+}
+
+/* Slider de imágenes dentro de las tarjetas - MUY IMPORTANTE PARA QUE NO SE CORTEN */
+.slider-container {
+    position: relative;
+    width: 100%;
+    padding-top: 75%; /* Esto define la altura del slider en relación a su ancho (e.g., 75% para 4:3, 56.25% para 16:9). ¡AJUSTA ESTO SI QUIERES OTRA RELACIÓN DE ASPECTO! */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que se salga */
+    border-radius: 22px; /* Bordes redondeados más acentuados para el slider */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Sombra del slider más pronunciada */
+    background-color: #eee; /* Fondo temporal mientras carga la imagen */
+    border: 2px solid rgba(255, 175, 195, 0.4); /* Borde sutil y elegante */
+    transition: transform 0.3s ease;
+}
+
+
+.slider-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* <<<<<<<<<< ESTO ES LO QUE ASEGURA QUE LA IMAGEN CUBRA EL ESPACIO SIN CORTARSE NI DISTORSIONARSE */
+    opacity: 0;
+    transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más lenta y suave para las imágenes */
+    border-radius: 20px; /* Bordes redondeados para las imágenes individuales */
+    filter: brightness(1.05) contrast(1.02); /* Suave mejora de la imagen */
+    transform: scale(1.01); /* Ligeramente ampliada para un efecto más inmersivo */
+}
+
+.slider-img.active {
+    opacity: 1;
+}
+
+/* Responsive para la sección de proyectos */
+@media (max-width: 1400px) {
+    .proyectos-grid {
+        max-width: 1100px;
+        gap: 60px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .proyectos-section h2 {
+        font-size: 3.5em;
+    }
+    .proyectos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 50px;
+    }
+    .card {
+        padding: 40px;
+    }
+    .card h3 {
+        font-size: 2.3em;
+    }
+    .card p {
+        font-size: 1.15em;
+    }
+}
+
+@media (max-width: 992px) { /* Tabletas en modo paisaje */
+    .proyectos-section {
+        padding: 100px 4%;
+    }
+    .proyectos-section h2 {
+        font-size: 3em;
+        margin-bottom: 2em;
+    }
+    .proyectos-section h2::after {
+        width: 70px;
+        height: 6px;
+    }
+    .proyectos-grid {
+        grid-template-columns: 1fr; /* Una columna para asegurar el centrado en la mayoría de tabletas/móviles */
+        gap: 40px;
+        max-width: 600px; /* Limita el ancho de la tarjeta individual */
+    }
+    .card {
+        padding: 35px;
+        border-radius: 25px;
+        margin: 0 auto; /* Centra las tarjetas individuales cuando están en una columna */
+    }
+    .card h3 {
+        font-size: 2.1em;
+        margin-top: 30px;
+    }
+    .card p {
+        font-size: 1.1em;
+        line-height: 1.8;
+    }
+    .slider-container {
+        padding-top: 70%; /* Ajuste para mantener las imágenes destacadas en móviles */
+        border-radius: 20px;
+    }
+}
+
+@media (max-width: 768px) { /* Móviles grandes */
+    .proyectos-section {
+        padding: 80px 4%;
+    }
+    .proyectos-section h2 {
+        font-size: 2.5em;
+        margin-bottom: 1.8em;
+    }
+    .proyectos-section h2::after {
+        width: 60px;
+        height: 5px;
+    }
+    .card {
+        padding: 30px;
+        border-radius: 20px;
+    }
+    .card h3 {
+        font-size: 1.9em;
+    }
+    .card p {
+        font-size: 1em;
+    }
+    .slider-container {
+        padding-top: 85%; /* Las hacemos casi cuadradas para móviles */
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 480px) { /* Móviles pequeños */
+    .proyectos-section h2 {
+        font-size: 2em;
+        margin-bottom: 1.5em;
+    }
+    .proyectos-section h2::after {
+        width: 50px;
+        height: 4px;
+    }
+    .card {
+        padding: 25px;
+    }
+    .card h3 {
+        font-size: 1.7em;
+    }
+    .card p {
+        font-size: 0.95em;
+    }
+    .slider-container {
+        padding-top: 85%; /* Hacemos las imágenes más cuadradas aún */
+    }
+}
+
+/* --- FOOTER STYLING (MODERN & TOP) --- */
+
+footer {
+    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--dark-pink) 100%); /* Smooth gradient background */
+    color: var(--text-light);
+    text-align: center;
+    padding: 60px 30px 40px; /* More vertical padding */
+    margin-top: 100px; /* More space from previous section */
+    border-top-left-radius: 25px; /* Softer border radius */
+    border-top-right-radius: 25px; /* Softer border radius */
+    box-shadow: 0 -8px 30px var(--shadow-heavy); /* Stronger, more modern shadow */
+    font-family: var(--font-body);
+    position: relative; /* For potential future wave/shape effects */
+    overflow: hidden; /* Ensures shadows and potential animations stay within bounds */
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInSlideUp 1s ease-out forwards;
+    animation-delay: 5.8s;
+}
+
+/* Subtle background pattern for modern touch */
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="4" fill="%23FFE4E1" opacity="0.1"/><circle cx="85" cy="85" r="6" fill="%23FFC0CB" opacity="0.08"/><circle cx="50" cy="30" r="3" fill="%23FFB6C1" opacity="0.05"/></svg>');
+    background-size: 150px;
+    opacity: 0.7;
+    animation: moveFooterPattern 40s linear infinite;
+    z-index: 0;
+}
+
+@keyframes moveFooterPattern {
+    from { background-position: 0 0; }
+    to { background-position: 150px 150px; }
+}
+
+footer p { /* Copyright text */
+    font-size: 1.05em; /* Slightly smaller for balance */
+    margin-bottom: 30px; /* More space from link sections */
+    color: var(--text-light);
+    text-shadow: 0 1px 5px rgba(0,0,0,0.2); /* Deeper shadow for readability */
+    position: relative; /* Ensure it's above the ::before pseudo-element */
+    z-index: 1;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeInScale 0.8s ease-out forwards;
+    animation-delay: 6.0s;
+}
+
+
+/* Styling for the new footer columns container */
+.footer-links {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 40px; /* Generous top margin */
+    max-width: 1300px; /* Wider content area */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 30px; /* More horizontal padding */
+    position: relative;
+    z-index: 1; /* Ensure it's above the ::before pseudo-element */
+}
+
+/* Styling for individual footer columns */
+.footer-column {
+    flex: 1;
+    min-width: 200px; /* Slightly wider min-width */
+    margin: 20px; /* More margin around columns */
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background for columns */
+    padding: 25px;
+    border-radius: 15px; /* Rounded corners for columns */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    opacity: 0; /* Initial state for animation */
+    transform: translateY(30px); /* Initial state for animation */
+    animation: fadeInSlideUp 0.8s ease-out forwards; /* Apply animation */
+}
+
+.footer-column:hover {
+    transform: translateY(-8px) scale(1.02); /* Lift and slightly enlarge on hover */
+    background-color: rgba(255, 255, 255, 0.2); /* More opaque background on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25); /* Deeper shadow on hover */
+}
+
+/* Animation delays for footer columns */
+.footer-column:nth-child(1) { animation-delay: 6.2s; }
+.footer-column:nth-child(2) { animation-delay: 6.4s; }
+.footer-column:nth-child(3) { animation-delay: 6.6s; }
+
+
+/* Styling for column headings */
+.footer-column h3 {
+    font-family: var(--font-heading);
+    color: var(--secondary-pink); /* Use a vibrant secondary pink for headings */
+    margin-bottom: 20px; /* More space below heading */
+    font-size: 1.6em; /* Larger, more prominent headings */
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    border-bottom: 2px solid var(--accent-pink); /* Underline with accent pink */
+    padding-bottom: 8px; /* Space between text and underline */
+    display: inline-block; /* Make underline only as wide as text */
+}
+
+/* Styling for lists within footer columns */
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px; /* More space between list items */
+    font-size: 1.05em; /* Slightly larger text for better readability */
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Styling for links within footer columns */
+.footer-column ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out, text-shadow 0.3s ease-in-out;
+    position: relative;
+    padding-bottom: 2px; /* For hover effect */
+}
+
+.footer-column ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-pink); /* Accent pink underline */
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-out;
+}
+
+.footer-column ul li a:hover::after {
+    width: 100%;
+}
+
+.footer-column ul li a:hover {
+    color: var(--accent-pink); /* Accent pink on hover */
+    transform: translateX(5px); /* Subtle slide effect */
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.6); /* More prominent glow */
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 1024px) {
+    .footer-links {
+        padding: 0 20px;
+    }
+    .footer-column {
+        min-width: 160px;
+        margin: 15px;
+    }
+    .footer-column h3 {
+        font-size: 1.4em;
+    }
+    footer {
+        padding: 50px 20px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-column {
+        min-width: unset;
+        width: 90%; /* Wider columns when stacked */
+        max-width: 400px; /* Limit max width for readability */
+        margin: 15px 0;
+        text-align: center; /* Center text when columns are stacked */
+    }
+    .footer-column h3 {
+        display: block; /* Ensure heading takes full width for centering */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .footer-column ul li {
+        text-align: center;
+    }
+    footer {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 40px 15px 25px;
+    }
+    .footer-column {
+        padding: 20px;
+        margin: 10px 0;
+    }
+    .footer-column h3 {
+        font-size: 1.2em;
+    }
+    .footer-column ul li {
+        font-size: 0.9em;
+    }
+}

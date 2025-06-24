@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daniela Torres - Portafolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <h1>Daniela Esperanza</h1>
+      <nav>
+        <a href="#inicio" class="nav-link" data-lang-key="navInicio">Inicio</a>
+        <a href="#historia" class="nav-link" data-lang-key="navHistoria">Mi Historia</a>
+        <a href="#cv" class="nav-link" data-lang-key="navCV">Habilidades</a>
+        <a href="#proyectos" class="nav-link" data-lang-key="navProyectos">Proyectos</a>
+        <a href="#galeria" class="nav-link" data-lang-key="navGaleria">Galería</a>
+        <a href="#contacto" class="nav-link" data-lang-key="navContacto">Contacto</a>
+      </nav>
+    </div>
+    <div class="language-switcher">
+        <button id="languageToggle" class="language-button">English</button>
+    </div>
+  </header>
+
+  <section id="inicio" class="hero">
+    <img src="images/Danny.jpg" alt="Foto personal de Daniela" class="foto-principal animated-image"/>
+    <h2 class="animated-text" data-lang-key="heroTitle">¡Bienvenida a Mi Mundo Creativo!</h2>
+    <p class="animated-text" data-lang-key="heroParagraph">Explora mis proyectos, descubre mis habilidades y sumérgete en mi pasión por el diseño y la tecnología.</p>
+    <a href="#proyectos" class="boton hero-cta" data-lang-key="heroCTA">Ver Proyectos Destacados</a>
+  </section>
+
+  <section id="historia" class="section">
+    <h2 data-lang-key="historiaTitle">Mi Historia</h2>
+    <p data-lang-key="historiaParagraph">Desde el primer día, compartí el sueño de transformar ideas en realidades funcionales y estéticamente atractivas. Mi enfoque me permite entender las necesidades a fondo y comunicarme con claridad, trazando siempre un camino estratégico. Me siento cómoda liderando y colaborando, siempre mirando hacia adelante con una visión innovadora. Los desafíos los asumo con flexibilidad y fortaleza, y mi mente no tiene límites a la hora de idear soluciones, lo que hace que cada proyecto sea un verdadero disfrute.</p>
+    <img src="images/historia.jpg" alt="" />
+  </section>
+
+  <section id="cv" class="section">
+    <h2 data-lang-key="cvTitle">Habilidades</h2>
+    <ul class="lista-horizontal">
+      <li><strong data-lang-key="cvEduTitle">Educación:</strong> <span data-lang-key="cvEduText">Ingeniería en Sistemas y Redes Informáticas, Universidad Gerardo Barrios, 5º año</span></li>
+      <li><strong data-lang-key="cvExpTitle">Experiencia Clave:</strong> <span data-lang-key="cvExpText">Desarrollo Web Front-end (HTML5, CSS3, Responsive Design), Diseño UX/UI (Figma, Prototipado), Gestión de Proyectos Ágiles (Scrum)</span></li>
+      <li><strong data-lang-key="cvSkillsTitle">Habilidades Blandas:</strong> <span data-lang-key="cvSkillsText">Inteligencia emocional, Comunicación efectiva, Toma de decisiones estratégicas, Liderazgo y Trabajo en equipo, Visión e Innovación, Adaptabilidad y Resiliencia, Creatividad sin límites.</span></li>
+      <li><strong data-lang-key="cvInterestsTitle">Intereses:</strong> <span data-lang-key="cvInterestsText">Inteligencia Artificial, Ciberseguridad, Desarrollo de videojuegos indie, Diseño 3D.</span></li>
+    </ul>
+    </section>
+
+  <section id="proyectos" class="proyectos-section">
+  <h2 data-lang-key="proyectosTitle">Mis Proyectos Destacados</h2>
+  <div class="proyectos-grid">
+
+   <div class="card">
+  <div class="slider-container">
+    <img src="images/inicio.png" alt="Vista principal del sitio web interactivo para Start-up" class="slider-img active"/>
+    <img src="images/promociones.png" alt="Vista secundaria del sitio web interactivo para Start-up" class="slider-img"/>
+    <img src="images/productos.png" alt="Tercera vista del sitio web interactivo para Start-up" class="slider-img"/>
+  </div>
+  <h3 data-lang-key="proyecto1Title">Katana Sushi</h3>
+  <p data-lang-key="proyecto1Description">
+    Desarrollo de un sitio web interactivo y responsivo para Katana Sushi, un restaurante de sushi. 
+    Esta plataforma fue diseñada para mejorar la experiencia del cliente, permitiendo explorar el menú, 
+    realizar pedidos en línea y conocer las promociones especiales. Incluí galerías de imágenes de alta calidad 
+    y un sistema de reservas intuitivo para facilitar el acceso a los servicios del restaurante.
+  </p>
+</div>
+    <div class="card">
+      <div class="slider-container">
+        <img src="images/inixio.jpg" alt="Vista principal de la aplicación móvil de gestión de tareas" class="slider-img active"/>
+        <img src="images/iniciar.jpg" alt="Vista secundaria de la aplicación móvil de gestión de tareas" class="slider-img"/>
+      </div>
+      <h3 data-lang-key="proyecto2Title">Aplicación Móvil de Gestión de Tareas</h3>
+      <p data-lang-key="proyecto2Description">Desarrollo de una aplicación móvil multi-plataforma con React Native para la gestión eficiente de tareas personales y grupales. Implementé funcionalidades de sincronización en tiempo real y notificaciones push, mejorando la productividad del usuario.</p>
+    </div>
+
+  </div>
+</section>
+
+
+ 
+
+  <section id="contacto" class="section">
+    <h2 data-lang-key="contactoTitle">Conéctate Conmigo</h2>
+    <p class="contacto-intro" data-lang-key="contactoIntro">¿Tienes un proyecto en mente o simplemente quieres saludar? ¡Estoy encantada de escucharte!</p>
+    <form action="https://formspree.io/f/xnnvarkj" method="POST" class="contact-form">
+      <input type="text" name="nombre" placeholder="Tu Nombre Completo" required data-lang-placeholder-key="contactNamePlaceholder"/>
+      <input type="email" name="email" placeholder="Tu Correo Electrónico" required data-lang-placeholder-key="contactEmailPlaceholder"/>
+      <textarea name="mensaje" placeholder="Describe tu proyecto o escribe tu mensaje aquí..." required rows="6" data-lang-placeholder-key="contactMessagePlaceholder"></textarea>
+      <button type="submit" data-lang-key="contactButton">Enviar Mensaje Ahora</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Daniela Esperanza. Todos los derechos reservados.</p>
+    <div class="footer-links">
+        <div class="footer-column">
+            <h3 data-lang-key="footerLegalTitle">Documentos Legal</h3>
+            <ul>
+                <li><a href="/portafolio/politica-privacidad.html" data-lang-key="footerPrivacy">Política de Privacidad</a></li>
+                <li><a href="/portafolio/terminos-condiciones.html" data-lang-key="footerTerms">Términos y Condiciones</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3 data-lang-key="footerContactTitle">Contacto</h3>
+            <ul>
+                <li>Danny12@gmail.com</li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3 data-lang-key="footerSocialTitle">Mis Redes</h3>
+            <ul>
+                <li><a href="https://wa.me/72104292" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+                <li><a href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                </ul>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

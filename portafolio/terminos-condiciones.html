@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="termsTitle">Términos y Condiciones - Daniela Torres</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-container {
+            max-width: 900px;
+            margin: 80px auto 40px; /* Ajusta el margen superior para dejar espacio al header */
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 35px var(--shadow-medium);
+            text-align: left;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInSlideUp 1s ease-out forwards;
+        }
+        .content-container h1, .content-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--dark-pink);
+        }
+        .content-container h2 {
+            margin-top: 40px;
+            font-size: 2.2em;
+            color: var(--accent-pink);
+        }
+        .content-container p, .content-container ol li {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+        .content-container ol {
+            list-style: decimal;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        .content-container a {
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+        .content-container a:hover {
+            color: var(--dark-pink);
+            text-decoration: underline;
+        }
+
+        /* Estilos del header y footer importados o copiados para consistencia */
+        header {
+            background: var(--primary-pink);
+            color: var(--text-light);
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 6px 20px var(--shadow-medium);
+            position: relative; /* Necesario para posicionar el language-switcher */
+            z-index: 1000;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header h1 {
+            color: var(--text-light);
+            font-size: 4em;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+        }
+        /* Language switcher (para mantenerlo en todas las páginas) */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            z-index: 1001;
+        }
+        .language-button {
+            background-color: var(--accent-pink);
+            color: var(--text-light);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.05em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            letter-spacing: 0.5px;
+        }
+        .language-button:hover {
+            background-color: var(--dark-pink);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Footer (copiado para consistencia) */
+        footer {
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--dark-pink) 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 60px 30px 40px;
+            margin-top: 80px;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            box-shadow: 0 -8px 30px var(--shadow-heavy);
+            font-family: var(--font-body);
+            position: relative;
+            overflow: hidden;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="4" fill="%23FFE4E1" opacity="0.1"/><circle cx="85" cy="85" r="6" fill="%23FFC0CB" opacity="0.08"/><circle cx="50" cy="30" r="3" fill="%23FFB6C1" opacity="0.05"/></svg>');
+            background-size: 150px;
+            opacity: 0.7;
+            animation: moveFooterPattern 40s linear infinite;
+            z-index: 0;
+        }
+        @keyframes moveFooterPattern { from { background-position: 0 0; } to { background-position: 150px 150px; } }
+        footer p {
+            font-size: 1.05em;
+            margin-bottom: 30px;
+            color: var(--text-light);
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 30px;
+            position: relative;
+            z-index: 1;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin: 20px;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        }
+        .footer-column:hover {
+            transform: translateY(-8px) scale(1.02);
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+        .footer-column h3 {
+            font-family: var(--font-heading);
+            color: var(--secondary-pink);
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+            border-bottom: 2px solid var(--accent-pink);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-column ul li {
+            margin-bottom: 12px;
+            font-size: 1.05em;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .footer-column ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease-in-out, transform 0.2s ease-in-out, text-shadow 0.3s ease-in-out;
+            position: relative;
+            padding-bottom: 2px;
+        }
+        .footer-column ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-pink);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease-out;
+        }
+        .footer-column ul li a:hover::after {
+            width: 100%;
+        }
+        .footer-column ul li a:hover {
+            color: var(--accent-pink);
+            transform: translateX(5px);
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+        }
+
+        /* Responsive adjustments for these pages */
+        @media (max-width: 768px) {
+            .content-container {
+                margin-top: 60px;
+                padding: 25px;
+                border-radius: 15px;
+            }
+            .content-container h1 { font-size: 2.2em; }
+            .content-container h2 { font-size: 1.8em; }
+            .content-container p, .content-container ol li { font-size: 1em; }
+            .language-switcher { top: 15px; right: 15px; }
+            .language-button { padding: 8px 15px; font-size: 0.95em; }
+        }
+        @media (max-width: 480px) {
+            .content-container {
+                margin-top: 40px;
+                padding: 15px;
+                border-radius: 10px;
+            }
+            .content-container h1 { font-size: 1.8em; }
+            .content-container h2 { font-size: 1.5em; }
+            .content-container p, .content-container ol li { font-size: 0.9em; }
+            .language-switcher { position: relative; top: auto; right: auto; margin: 15px auto 0; text-align: center; }
+            .language-button { width: fit-content; margin: 0 auto; display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Daniela Esperanza</h1>
+        </div>
+        </div>
+    </header>
+
+    <div class="content-container">
+        <h1 data-lang-key="termsHeading">Términos y Condiciones</h1>
+        <p data-lang-key="termsIntro">Bienvenido al portafolio de Daniela Torres. Al acceder o utilizar este sitio web, usted acepta cumplir y estar sujeto a los siguientes términos y condiciones de uso.</p>
+
+        <h2 data-lang-key="termsSection1Title">1. Uso del Contenido</h2>
+        <ol data-lang-key="termsSection1List">
+            <li>Todo el contenido de este sitio web, incluidos textos, gráficos, logotipos, imágenes, videos, clips de audio y software, es propiedad de Daniela Torres o de sus proveedores de contenido y está protegido por las leyes de derechos de autor y marcas registradas.</li>
+            <li>Usted puede ver, descargar e imprimir páginas del sitio web para su uso personal y no comercial, sujeto a las restricciones establecidas a continuación y en otras partes de estos términos y condiciones.</li>
+            <li>No debe:
+                <ul>
+                    <li>Republicar material de este sitio web (incluida la republicación en otro sitio web);</li>
+                    <li>Vender, alquilar o sublicenciar material del sitio web;</li>
+                    <li>Reproducir, duplicar, copiar o explotar material de este sitio web con fines comerciales;</li>
+                    <li>Editar o modificar cualquier material del sitio web; o</li>
+                    <li>Redistribuir material de este sitio web.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2 data-lang-key="termsSection2Title">2. Ausencia de Garantías</h2>
+        <p data-lang-key="termsSection2P1">Este sitio web se proporciona "tal cual" sin ninguna representación o garantía, expresa o implícita. Daniela Torres no hace representaciones ni garantías en relación con este sitio web o la información y los materiales proporcionados en este sitio web.</p>
+        <p data-lang-key="termsSection2P2">Sin perjuicio de la generalidad del párrafo anterior, Daniela Torres no garantiza que:</p>
+        <ul data-lang-key="termsSection2List">
+            <li>Este sitio web estará constantemente disponible, o disponible en absoluto; o</li>
+            <li>La información en este sitio web es completa, verdadera, precisa o no engañosa.</li>
+        </ul>
+
+        <h2 data-lang-key="termsSection3Title">3. Limitaciones de Responsabilidad</h2>
+        <p data-lang-key="termsSection3P1">Daniela Torres no será responsable ante usted (ya sea bajo la ley de contacto, la ley de agravios o de otra manera) en relación con el contenido o el uso de, o de otra manera en conexión con, este sitio web:</p>
+        <ul data-lang-key="termsSection3List">
+            <li>En la medida en que el sitio web se proporciona de forma gratuita, por cualquier pérdida directa;</li>
+            <li>Por cualquier pérdida indirecta, especial o consecuencial; o</li>
+            <li>Por cualquier pérdida comercial, pérdida de ingresos, ganancias o ahorros anticipados, pérdida de contratos o relaciones comerciales, pérdida de reputación o buena voluntad, o pérdida o corrupción de información o datos.</li>
+        </ul>
+        <p data-lang-key="termsSection3P2">Estas limitaciones de responsabilidad se aplican incluso si Daniela Torres ha sido expresamente advertida de la posible pérdida.</p>
+
+        <h2 data-lang-key="termsSection4Title">4. Razonabilidad</h2>
+        <p data-lang-key="termsSection4P1">Al utilizar este sitio web, usted acepta que las exclusiones y limitaciones de responsabilidad establecidas en este descargo de responsabilidad del sitio web son razonables.</p>
+        <p data-lang-key="termsSection4P2">Si no cree que son razonables, no debe utilizar este sitio web.</p>
+
+        <h2 data-lang-key="termsSection5Title">5. Indemnización</h2>
+        <p data-lang-key="termsSection5P1">Usted indemniza a Daniela Torres y se compromete a mantenerla indemnizada contra cualquier pérdida, daño, costos, responsabilidades y gastos (incluidos, entre otros, los gastos legales y cualquier cantidad pagada por Daniela Torres a un tercero en la resolución de una reclamación o disputa según el consejo de los asesores legales de Daniela Torres) incurridos o sufridos por Daniela Torres que surjan de cualquier incumplimiento por su parte de cualquier disposición de estos términos y condiciones, o que surja de cualquier reclamación de que ha incumplido cualquier disposición de estos términos y condiciones.</p>
+
+        <h2 data-lang-key="termsSection6Title">6. Incumplimientos</h2>
+        <p data-lang-key="termsSection6P1">Sin perjuicio de los otros derechos de Daniela Torres bajo estos términos y condiciones, si usted incumple estos términos y condiciones de alguna manera, Daniela Torres puede tomar las medidas que considere apropiadas para abordar el incumplimiento, incluida la suspensión de su acceso al sitio web, la prohibición de acceder al sitio web, el bloqueo de computadoras que utilizan su dirección IP para acceder al sitio web, ponerse en contacto con su proveedor de servicios de Internet para solicitar que bloqueen su acceso al sitio web y/o iniciar procedimientos judiciales en su contra.</p>
+
+        <h2 data-lang-key="termsSection7Title">7. Divisibilidad</h2>
+        <p data-lang-key="termsSection7P1">Si una disposición de estos términos y condiciones es determinada por un tribunal u otra autoridad competente como ilegal y/o inaplicable, las otras disposiciones continuarán en vigor. Si alguna disposición ilegal y/o inaplicable fuera legal o aplicable si parte de ella fuera eliminada, esa parte se considerará eliminada, y el resto de la disposición continuará en vigor.</p>
+
+        <h2 data-lang-key="termsSection8Title">8. Modificación</h2>
+        <p data-lang-key="termsSection8P1">Daniela Torres puede revisar estos términos y condiciones de vez en cuando. Los términos y condiciones revisados se aplicarán al uso de este sitio web a partir de la fecha de publicación de los términos y condiciones revisados en este sitio web. Por favor, revise esta página regularmente para asegurarse de que está familiarizado con la versión actual.</p>
+
+        <h2 data-lang-key="termsSection9Title">9. Acuerdo Completo</h2>
+        <p data-lang-key="termsSection9P1">Estos términos y condiciones, junto con la política de privacidad de Daniela Torres, constituyen el acuerdo completo entre usted y Daniela Torres en relación con su uso de este sitio web, y reemplazan todos los acuerdos anteriores con respecto a su uso de este sitio web.</p>
+
+        <h2 data-lang-key="termsSection10Title">10. Ley Aplicable y Jurisdicción</h2>
+        <p data-lang-key="termsSection10P1">Estos términos y condiciones se regirán e interpretarán de acuerdo con las leyes de El Salvador, y cualquier disputa relacionada con estos términos y condiciones estará sujeta a la jurisdicción exclusiva de los tribunales de El Salvador.</p>
+    </div>
+
+    <footer>
+    <p>&copy; 2025 Daniela Esperanza. Todos los derechos reservados.</p>
+  </footer>
+    <script src="script.js"></script>
+</body>
+</html>
